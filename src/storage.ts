@@ -1,9 +1,18 @@
+import StorageArea = chrome.storage.StorageArea;
+
+function storage():StorageArea{
+  return chrome.storage.local;
+}
+
+
 // Define your storage data here
-export interface Storage {} // eslint-disable-line
+export interface Storage {
+  [key: string]: any;
+} // eslint-disable-line
 
 export function getStorageData(): Promise<Storage> {
   return new Promise((resolve, reject) => {
-    chrome.storage.sync.get(null, (result) => {
+    storage().get(null, (result) => {
       if (chrome.runtime.lastError) {
         return reject(chrome.runtime.lastError);
       }
@@ -15,7 +24,7 @@ export function getStorageData(): Promise<Storage> {
 
 export function setStorageData(data: Storage): Promise<void> {
   return new Promise((resolve, reject) => {
-    chrome.storage.sync.set(data, () => {
+    storage().set(data, () => {
       if (chrome.runtime.lastError) {
         return reject(chrome.runtime.lastError);
       }
@@ -29,7 +38,7 @@ export function getStorageItem<Key extends keyof Storage>(
   key: Key,
 ): Promise<Storage[Key]> {
   return new Promise((resolve, reject) => {
-    chrome.storage.sync.get([key], (result) => {
+    storage().get([key], (result) => {
       if (chrome.runtime.lastError) {
         return reject(chrome.runtime.lastError);
       }
@@ -44,7 +53,7 @@ export function setStorageItem<Key extends keyof Storage>(
   value: Storage[Key],
 ): Promise<void> {
   return new Promise((resolve, reject) => {
-    chrome.storage.sync.set({ [key]: value }, () => {
+    storage().set({ [key]: value }, () => {
       if (chrome.runtime.lastError) {
         return reject(chrome.runtime.lastError);
       }
