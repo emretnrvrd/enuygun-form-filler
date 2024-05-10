@@ -1,27 +1,28 @@
-import { IInput, Input } from './Input';
+import { ITemplate, Template } from './Template';
 
 export interface IForm {
-  id: string;
-  title: string;
-  urlPatterns: string[],
-  inputs: Input[];
+    id: string;
+    title: string;
+    allowedPathNames: string[];
+    templates: Template[];
 }
 
-export class Form implements IForm{
-  id: string;
-  title: string;
-  urlPatterns: string[];
-  inputs: Input[];
+export class Form implements IForm {
+    id: string;
+    title: string;
+    allowedPathNames: string[];
+    templates: Template[];
 
-  constructor(data: IForm) {
-    this.fromDb(data);
-  }
+    constructor(data: IForm) {
+        this.fromDb(data);
+    }
 
-  fromDb(data: IForm) {
-    this.id = data.id;
-    this.title = data.title;
-    this.urlPatterns = data.urlPatterns;
-    this.inputs = data.inputs.map((input: IInput) => new Input(input));
-  }
+    fromDb(data: IForm) {
+        this.id = data.id;
+        this.title = data.title;
+        this.allowedPathNames = data.allowedPathNames;
+        this.templates = data.templates.map(
+            (template: ITemplate) => new Template(template),
+        );
+    }
 }
-

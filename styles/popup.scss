@@ -1,15 +1,10 @@
+@import 'bootstrap.min';
 @import 'common.scss';
 
-.container {
-  min-height: 200px;
-  min-width: 300px;
 
-  padding: 2rem;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
+.head-title{
+  color: $green;
+}
+.content-wrapper {
+  min-height: 150px;
 }

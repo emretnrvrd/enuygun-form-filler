@@ -20,13 +20,20 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
         test: /\.(scss|css)$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.vue'],
+    alias: {
+      vue$: 'vue/dist/vue.runtime.esm-browser.js',
+    },
   },
   output: {
     filename: '[name].js',
@@ -36,7 +43,7 @@ module.exports = {
   plugins: [
     new DotenvPlugin(),
     new ESLintPlugin({
-      extensions: ['js', 'ts'],
+      extensions: ['js', 'ts', 'vue'],
       overrideConfigFile: path.resolve(__dirname, '.eslintrc'),
     }),
     new MiniCssExtractPlugin({

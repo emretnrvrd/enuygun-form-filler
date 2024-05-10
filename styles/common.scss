@@ -1,17 +1,10 @@
 @import 'normalize.css';
 
+$green: #2DC44D;
 body {
-  background-color: #292d3e;
+  background-color: #2b3050;
   color: #ffffff;
 }
-
-.input-group {
-  display: flex;
-
-  margin: 1rem 0;
-
-  flex-direction: row;
-  gap: 1rem;
-
-  align-items: center;
+.head-title{
+  color: $green;
 }

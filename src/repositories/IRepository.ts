@@ -1,5 +1,5 @@
 export default interface IRepository {
-  collectionId: string;
+    collectionId: string;
 
-  getAll(): Promise<any[]>;
-};
+    getAll(): Promise<any[]>;
+}

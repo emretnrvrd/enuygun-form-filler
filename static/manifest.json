@@ -1,7 +1,7 @@
 {
-  "name": "chrome-extension-webpack",
-  "description": "My basic Chrome extension",
-  "version": "0.1.0",
+  "name": "enuygun-form-filler",
+  "description": "Enuygun Auto Form Filler",
+  "version": "0.0.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "serviceWorker.js"
@@ -12,13 +12,13 @@
       "js": ["contentScript.js"]
     }
   ],
-  "permissions": ["storage", "scripting"],
+  "permissions": ["tabs", "activeTab", "scripting", "storage"],
   "options_ui": {
-    "page": "options.html",
+    "page": "options/main.html",
     "open_in_tab": true
   },
   "action": {
-    "default_title": "My basic Chrome extension",
+    "default_title": "Enuygun Auto Form Filler",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "/icons/16x.png",
